@@ -34,17 +34,5 @@
             "count": 1,
             "nbt": "{Damage:79,affix_data:{affixes:{\"apotheosis:armor/attribute/blessed\":0.53321916f},name:\u0027{\"color\":\"#808080\",\"translate\":\"misc.apotheosis.affix_name.two\",\"with\":[{\"translate\":\"affix.apotheosis:armor/attribute/blessed\"},\"\",\"\"]}\u0027,rarity:\"apotheosis:common\"}}"
         }
-    ],
-    "tier_data": [
-        6,
-        54,
-        354,
-        1254
-    ],
-    "data_per_kill": [
-        1,
-        4,
-        10,
-        18
     ]
 }
