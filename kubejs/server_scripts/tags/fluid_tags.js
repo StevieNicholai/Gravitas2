@@ -40,7 +40,8 @@ const addFluidTags = (/** @type {TagEvent.Fluid} */ event) => {
     ])
 
     event.add("tfc:usable_in_jug", [
-        "gregitas:maple_syrup"
+        "gregitas:maple_syrup",
+        "gregitas:iced_pina_colada"
     ])
 
     event.add("tfc:usable_in_ingot_mold",

@@ -153,7 +153,7 @@ const TFCtoGTores = {
   "cryolite": "8x gtceu:crushed_redstone_ore",
   "halite": "4x gtceu:crushed_salt_ore",
   "sylvite": "4x gtceu:crushed_rock_salt_ore",
-  "borax": "6x gtceu:crushed_borax_ore",
+  "borax": "6x gtceu:borax_dust",
   "saltpeter": "4x gtceu:crushed_saltpeter_ore"
 }
 
@@ -2202,6 +2202,15 @@ event.stonecutting("2x railways:riveted_locometal", "minecraft:iron_ingot")
       .duration(40)
       .EUt(LV)
   })
+  // Iced drinks
+  event.recipes.gtceu
+  .mixer("gregitas:iced_pina_colada")
+  .itemInputs('gregitas:crushed_frostburn')
+  .inputFluids(Fluid.of("firmalife:pina_colada", 250))
+  .outputFluids(Fluid.of('gregitas:iced_pina_colada', 250))
+  .duration(10)
+  .EUt(LV)
+
  // tfc plant dyes
 
  dyes.forEach((dye) => {

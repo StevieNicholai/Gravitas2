@@ -8,4 +8,5 @@ let registerFluids = (/** @type {Registry.Fluid} */ event) => {
   event.create("gregitas:raw_resin").thickTexture(0x785808).displayName("Raw Resin")
   event.create("gregitas:crimson_resin").thickTexture(0xb62a0c).displayName("Crimson Resin")
   event.create("gregitas:warped_resin").thickTexture(0x000f75).displayName("Warped Resin")
+  event.create("gregitas:iced_pina_colada").thickTexture(0xffffaa).displayName("Iced Piña Colada")
 }

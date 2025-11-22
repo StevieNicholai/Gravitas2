@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:creosote",
-    "gtceu:liquid_air"
+    "gtceu:liquid_air",
+    "gregitas:iced_pina_colada"
   ]
 }

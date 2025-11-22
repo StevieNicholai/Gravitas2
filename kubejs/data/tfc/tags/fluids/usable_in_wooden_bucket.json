@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:creosote"
+    "#forge:creosote",
+    "gregitas:iced_pina_colada"
   ]
 }
