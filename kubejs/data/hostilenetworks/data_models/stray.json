@@ -1,0 +1,48 @@
+{
+    "entity": "minecraft:stray",
+    "variants": [],
+    "name": "entity.minecraft.stray",
+    "name_color": "#DC2358",
+    "display_nbt": {},
+    "gui_scale": 1,
+    "gui_x_offset": 0,
+    "gui_y_offset": 0,
+    "gui_z_offset": 0,
+    "sim_cost": 512,
+    "input": {
+        "item": "hostilenetworks:prediction_matrix",
+        "count": 1
+    },
+    "base_drop": {
+        "item": "minecraft:stick",
+        "count": 1
+    },
+    "trivia": "hostilenetworks.trivia.stray",
+    "fabricator_drops": [
+        {
+            "item": "minecraft:tipped_arrow",
+            "count": 2,
+            "nbt": "{Potion:\"minecraft:slowness\"}"
+        },
+        {
+            "item": "minecraft:bone",
+            "count": 4
+        },
+        {
+            "item": "minecraft:arrow",
+            "count": 12
+        }
+    ],
+    "tier_data": [
+        6,
+        54,
+        354,
+        1254
+    ],
+    "data_per_kill": [
+        1,
+        4,
+        10,
+        18
+    ]
+}
