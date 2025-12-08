@@ -2697,7 +2697,7 @@ event.stonecutting("2x railways:riveted_locometal", "minecraft:iron_ingot")
   event.recipes.gtceu.mixer("gregitas:fission_reactor_empty_heatsink")
     .itemInputs("2x gtceu:kanthal_plate", "4x gtceu:steel_plate", "minecraft:bucket")
     .inputFluids(Fluid.of("gtceu:concrete", 144))
-    .itemOutputs("nuclearcraft:fission_reactor_empty_heatsink")
+    .itemOutputs("nuclearcraft:reactor_empty_heatsink")
     .duration(400)
     .EUt(MV * 0.5)
   
