@@ -198,6 +198,8 @@ const addItemTags = (/** @type {TagEvent.Item} */ event) => {
 
   event.add("forge:tools/saws", ["#tfc:saws"])
   event.add("forge:tools/hammers", "#tfc:hammers")
+  // turn tfc hammers into GT hammers, since there's no way to craft valid GT hammers otherwise
+  event.add("gtceu:tools/crafting_hammers", "#tfc:hammers")
   event.add("forge:tools/knives", ["#tfc:knives"])
 
   event.add("forge:tools", ["#forge:tools/saws", "#forge:tools/hammers", "#forge:tools/wrench", "#forge:tools/knives", "#forge:tools/files"])
