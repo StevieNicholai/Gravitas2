@@ -1068,14 +1068,23 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
 
   // mortar
   event.recipes.gtceu
-    .mixer("gt_mixer_mortar")
+    .mixer("gt_mixer_mortar_concrete")
     .itemInputs("#forge:sand")
     .inputFluids(Fluid.of("tfc:limewater", 100))
     .inputFluids(Fluid.of("gtceu:concrete", 100))
-    .itemOutputs("32x tfc:mortar")
+    .itemOutputs("48x tfc:mortar")
+    .circuit(4)
     .EUt(LV)
     .duration(75)
 
+  event.recipes.gtceu
+    .mixer("gt_mixer_mortar")
+    .itemInputs("#forge:sand")
+    .inputFluids(Fluid.of("tfc:limewater", 100))
+    .itemOutputs("24x tfc:mortar")
+    .EUt(LV)
+    .duration(75)
+    .circuit(1)
   //olive oil
 
   event.recipes.gtceu
@@ -1376,7 +1385,17 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
       .duration(4 * 20)
       .EUt(8)
   })
+//FLux
 
+  event.recipes.gtceu
+    .macerator("gregitas:flux_dust")
+    .itemInputs(Ingredient.of("#tfc:fluxstone", 1))
+    .itemOutputs(Item.of("tfc:powder/flux", 4))
+    .circuit(6)
+    .duration(200)
+    .EUt(LV)
+
+    
   //wireless chargers
 
   event.recipes.gtceu
