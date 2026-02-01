@@ -776,7 +776,7 @@
 			id: "2C3815F9194AC1D5"
 			tasks: [{
 				id: "1ABDFF521F7303A8"
-				item: "gtceu:stainless_steel_ingot"
+				item: "firmalife:metal/ingot/stainless_steel"
 				type: "item"
 			}]
 			x: -1.0d
