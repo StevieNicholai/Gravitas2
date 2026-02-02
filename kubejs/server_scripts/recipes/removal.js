@@ -653,6 +653,10 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "workerstfc:anvil/coins2"})
   event.remove({ id: "workerstfc:anvil/coins3"})
   event.remove({ id: "workerstfc:anvil/coins4"})
-  event.remove({ id: "tfc_ie_addon:welding/aluminum_double_ingot"})
 
+
+  //Misc
+  event.remove({ id: "tfc_ie_addon:welding/aluminum_double_ingot"})
+  event.remove({ id: "create:milling/bone"})
+  event.remove({ id: "minecraft:brewing_stand"})
 }

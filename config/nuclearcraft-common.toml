@@ -264,7 +264,7 @@
 #Forge Tag priority
 [forge_tag_priority]
 	#Priority of mods to resolve forge tags to itemstack.
-	mods_priority = ["nuclearcraft", "mekanism", "immersiveengineering", "tconstruct"]
+	mods_priority = ["gtceu","tfc", "immersiveengineering"]
 
 #Settings for In situ leaching
 [in_situ_leaching]
