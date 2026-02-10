@@ -2,16 +2,19 @@
 
 ServerEvents.recipes((event) => {
   recipeRemoval(event)
+  dfcRecipesRemoval(event)
   replaceRecipes(event)
+  dfcRecipesReplace(event)
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
   addCollapse(event)
   tfcGregTools(event)
   recipesTFCGlassblowingLenses(event)
-  tfcMetalProcessing(event)
   gtceuAdd(event)
   createAdd(event)
   centrifugeAdd(event)
+  tfcRecipesAdd(event)
+  dfcRecipesAdd(event)
   //oreWashingAdd(event)
   //oreVibratingAdd(event)
   //viSulfuricAcid(event)
@@ -28,8 +31,6 @@ ServerEvents.recipes((event) => {
   gregifyLaserIO(event)
   replaceDisc(event)
   blazeLiquidFuels(event)
-  dfcRecipes(event)
-  addDFCHeatingRecipesViaEvent(event)
 })
 
 LootJS.modifiers((event) => {
@@ -54,6 +55,7 @@ ServerEvents.tags("worldgen/placed_feature", (event) => {
 
 ServerEvents.tags("item", (event) => {
   addItemTags(event)
+  dfcAddItemTags(event)
 })
 ServerEvents.tags("entity", (event) => {
   entityTags(event)

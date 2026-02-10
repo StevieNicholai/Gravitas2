@@ -10,6 +10,7 @@ const toolsToRemove = [
   "blue_steel",
   "red_steel"
 ]
+
 function logRecipeCategories() {
   let categories = global.jeiRuntime.recipeManager.createRecipeCategoryLookup().get().toList()
   categories.forEach(category => {
@@ -20,18 +21,6 @@ function logRecipeCategories() {
 let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   // After adding mods, use this to update client_scripts/recipe_categories:
   // logRecipeCategories();
-
-  // DFC - remove all recipes outputting DFC powders
-  const dfcPowderMetals = [
-    "bismuth", "bismuth_bronze", "black_bronze", "bronze", "brass",
-    "copper", "gold", "nickel", "rose_gold", "silver", "tin", "zinc",
-    "sterling_silver", "wrought_iron", "steel", "black_steel",
-    "blue_steel", "red_steel", "aluminum", "lead", "platinum", "cast_iron",
-    "alumina", "pewter"
-  ]
-  dfcPowderMetals.forEach((metal) => {
-    event.remove({ output: `dfc:metal/powder/${metal}` })
-  })
 
   // Global remove + hides
   global.itemsToRemove.forEach(item => event.remove({output: item}))
@@ -68,6 +57,8 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "gtceu:shaped/stick_wrought_iron" })
   event.remove({ id: "gtceu:cutter/cut_glass_block_to_plate_water"})
   event.remove({ id: "gtceu:shaped/stick_long_stick_wrought_iron" })
+  event.remove({ id: "gtceu:compressor/bricks" })
+  event.remove({ id: "gtceu:extractor/bricks_extraction" })
   event.remove({ id: "gtceu:shaped/wire_cutter_wrought_iron" })
   event.remove({ id: "gtceu:shaped/iron_bucket" })
   event.remove({ id: "gtceu:shaped/casing_primitive_bricks"})

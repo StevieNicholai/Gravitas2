@@ -507,12 +507,6 @@ const addItemTags = (/** @type {TagEvent.Item} */ event) => {
   event.add("gtceu:tools/crafting_hammers", "#tfc:hammers")
   event.add("gtceu:tools/crafting_knives", "#tfc:knives")
 
-  // DFC - add pewter plate tags
-  event.add("forge:plates", "dfc:metal/sheet/pewter")
-  event.add("forge:plates/pewter", "dfc:metal/sheet/pewter")
-  event.add("forge:double_plates", "dfc:metal/double_sheet/pewter")
-  event.add("forge:double_plates/pewter", "dfc:metal/double_sheet/pewter")
-
   // TFC - add cast iron plate tags
   event.add("forge:plates", "tfc:metal/sheet/cast_iron")
   event.add("forge:plates/cast_iron", "tfc:metal/sheet/cast_iron")

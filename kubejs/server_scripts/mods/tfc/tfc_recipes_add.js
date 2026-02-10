@@ -1,6 +1,4 @@
-// priority 10
-
-const tfcMetalProcessing = (/** @type {Internal.RecipesEventJS} */ event) => {
+const tfcRecipesAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
   // === TFC Cast Iron Sheet Processing ===
 
   // Create press: ingot → sheet
@@ -62,7 +60,8 @@ const tfcMetalProcessing = (/** @type {Internal.RecipesEventJS} */ event) => {
     .duration(100)
     .EUt(24)
 
-  // Cast iron rod processing recipes
+  // === TFC Cast Iron Rod Processing ===
+  
   // Create rolling: 1 ingot → 2 rods
   event.recipes.createaddition.rolling(
     Item.of('tfc:metal/rod/cast_iron', 2),

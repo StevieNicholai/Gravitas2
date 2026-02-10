@@ -1445,4 +1445,22 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     .itemOutputs("wirelesschargers:advanced_wireless_block_charger")
     .duration(200)
     .EUt(HV)
+
+  // Brick recipes - balanced to match TFC recipe without infinite loops
+  // TFC recipe: 5 bricks + 4 mortar → 4 brick blocks
+  // Compressor saves mortar cost but maintains brick ratio
+  event.recipes.gtceu
+    .compressor("gregitas:bricks_compressor")
+    .itemInputs("5x minecraft:brick")
+    .itemOutputs("4x minecraft:bricks")
+    .duration(60)
+    .EUt(2)
+
+  // Extractor reverses the compressor recipe at 1:1 brick ratio
+  event.recipes.gtceu
+    .extractor("gregitas:bricks_extractor")
+    .itemInputs("4x minecraft:bricks")
+    .itemOutputs("5x minecraft:brick")
+    .duration(60)
+    .EUt(2)
 }

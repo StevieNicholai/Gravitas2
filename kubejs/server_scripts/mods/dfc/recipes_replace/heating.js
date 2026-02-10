@@ -1,16 +1,7 @@
 // priority 10
 
-let addDFCHeatingRecipesViaEvent = (/** @type {Internal.RecipesEventJS} */ event) => {
-  // DFC metals that have decorative blocks
-  const dfcMetalNames = [
-    "bismuth", "bismuth_bronze", "black_bronze", "bronze", "brass",
-    "copper", "gold", "nickel", "rose_gold", "silver", "tin", "zinc",
-    "sterling_silver", "wrought_iron", "steel", "black_steel",
-    "blue_steel", "red_steel", "aluminum", "lead", "platinum",
-    "cast_iron", "alumina", "pewter"
-  ]
-
-  const dfcMetals = dfcMetalNames.map(function(metalName) {
+const dfcRecipesReplaceHeating = (/** @type {Internal.RecipesEventJS} */ event) => {
+  const dfcMetals = dfcAllMetals.map(function(metalName) {
     const heatingData = global.metalHeatingData[metalName]
     if (!heatingData) {
       console.error(`Missing heating data for metal: ${metalName}`)
