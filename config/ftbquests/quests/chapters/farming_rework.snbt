@@ -1444,11 +1444,7 @@
 		}
 		{
 			dependencies: ["16032267A8FE5923"]
-			description: [
-				"{gravitas.quest.farm.desc.cellar}"
-				""
-				"{\"text\": \"Click to read about Cellars in the online TFC Field Guide\", \"color\": \"aqua\", \"underlined\": true, \"clickEvent\":, {\"action\": \"value\": \"custom:patchouli:tfc/firmalife/beekeeping_8\"}}"
-			]
+			description: ["{gravitas.quest.farm.desc.cellar}"]
 			icon: "firmalife:climate_station"
 			id: "14C406B29A7BFBD3"
 			tasks: [{
@@ -2868,3 +2864,4 @@
 	]
 	title: "{gravitas.chapters.7.title}"
 }
+
