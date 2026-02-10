@@ -661,6 +661,8 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "tfc_ie_addon:crafting/metal/block/uranium"})
   event.remove({ id: "nuclearcraft:alloy_smelter/dusts_steel-dusts_chromium"})
   event.remove({ id: "nuclearcraft:alloy_smelter/ingots_steel-ingots_chromium"})
-  
+  event.remove({ id: "farmersdelight:sweet_berry_cheesecake"})
+  event.remove({ id: "farmersdelight:pie_crust"})
+  event.remove({ id: "farmersdelight:integration/create/mixing/pie_crust_from_mixing"})
 
 }
