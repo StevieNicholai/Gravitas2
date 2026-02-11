@@ -14,7 +14,7 @@ ServerEvents.recipes((event) => {
   //oreWashingAdd(event)
   //oreVibratingAdd(event)
   viSulfuricAcid(event)
-  //wiresAdd(event)
+  wiresAdd(event)
   addOreConversions(event)
   create_new_age(event)
   createMaterialProcessingAdd(event)
