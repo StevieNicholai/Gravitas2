@@ -1,5 +1,5 @@
 // priority: 10
-
+/*
 const professions = [
     "minecraft:armorer",
     "minecraft:butcher",
@@ -29,9 +29,9 @@ const gemStones = [
 ];
 
 const tradeLevelXp = [1, 5, 10, 15, 20]
-
+*/
 const replaceTrades = ((event) => {
-
+/*
     event.removeVanillaTrades();
 
     event.removeModdedTrades();
@@ -74,6 +74,7 @@ const replaceTrades = ((event) => {
 
     addWeaponsmithTrades(event);
     console.info("Added Weaponsmith Trades");
+    */
 })
 
 function addArmorerTrades(event) {
@@ -155,7 +156,8 @@ function addButcherTrades(event) {
     event.addTrade("minecraft:butcher", 5, [TradeItem.of("tfc:gem/opal", 1, 1), TradeItem.of("tfc:gem/sapphire", 1, 2)], TradeItem.of("tfc:food/cooked_pheasant", 6, 20)).villagerExperience(tradeLevelXp[4]);
     event.addTrade("minecraft:butcher", 5, [TradeItem.of("tfc:gem/opal", 1, 1), TradeItem.of("tfc:gem/sapphire", 1, 2)], TradeItem.of("tfc:food/cooked_beef", 6, 20)).villagerExperience(tradeLevelXp[4]);
     event.addTrade("minecraft:butcher", 5, [TradeItem.of("tfc:gem/opal", 1, 1), TradeItem.of("tfc:gem/sapphire", 1, 2)], TradeItem.of("tfc:food/cooked_turkey", 6, 20)).villagerExperience(tradeLevelXp[4]);
-}
+
+    }
 
 function addCartographerTrades(event) {
     const biomeArray = [

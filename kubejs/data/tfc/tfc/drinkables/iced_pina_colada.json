@@ -1,0 +1,18 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "ingredient": "gregitas:iced_pina_colada",
+  "thirst": 35,
+  "intoxication": 2000,
+  "effects": [
+    {
+      "type": "minecraft:haste",
+      "duration": 1200,
+      "amplifier": 3
+    },
+    {
+      "type": "gregitas_core:refreshing",
+      "duration": 1800,
+      "amplifier": 0
+    }
+  ]
+}

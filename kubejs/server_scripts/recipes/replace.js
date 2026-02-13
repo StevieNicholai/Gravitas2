@@ -134,11 +134,7 @@ let replaceRecipes = (/** @type {Internal.RecipesEventJS} */ event) => {
     event.recipes.kubejs.shaped("create:fluid_tank", r.json.asMap().pattern, r.json.asMap().key).replaceIngredient("#tfc:barrels", Item.empty).id(r.getId())
   })
   event.replaceInput({id: "create_connected:crafting/kinetics/fluid_vessel"}, "minecraft:barrel", "#tfc:barrels")
-  event.forEachRecipe({id: "woodencog:crafting/sequenced_assembly/track"}, r => {
-    let modifiedResult = unwrapValue(r.get("results"))[0].get("item")
-    modifiedResult = Item.of(modifiedResult, 6)
-    r.results(modifiedResult)
-  })
+
 event.replaceInput({id: "woodencog:crushing/milling_raw_quartzite" }, "tfc:rock/cobble/quartzite", "tfc:rock/raw/quartzite")
 
   event.replaceOutput([{id: "woodencog:crushing/crushing_saltpeter"}, {id: "woodencog:crushing/milling_saltpeter"}], "gtceu:saltpeter_dust", "tfc:powder/saltpeter")
@@ -341,7 +337,7 @@ event.replaceInput(
 
 //more red
 
-  event.replaceInput({ mod: "morered"}, "morered:red_alloy_ingot", "gtceu:red_alloy_ingot")
+  event.replaceInput({ mod: "projectred_transmission"}, "projectred_transmission:red_alloy_ingot", "gtceu:red_alloy_ingot")
 
 //gcyr
 
@@ -377,5 +373,14 @@ event.replaceInput(
   event.replaceInput({ id: "immersive_aircraft:telescope" }, "#railways:internal/ingots/copper_ingots", "create:metal_bracket")
   event.replaceInput({ mod: "immersive_aircraft" }, "#railways:internal/ingots/copper_ingots", "#forge:plates/copper")
   event.replaceInput({ id: "minecraft:book"}, "minecraft:leather", "#forge:leather")
+  event.replaceInput({ id:"farmersdelight:cooking_pot"}, "minecraft:iron_ingot", "#forge:plates/bronze")
+  event.replaceInput({ id: "farmersdelight:cooking_pot"}, "minecraft:wooden_shovel", "minecraft:stick")
+  event.replaceInput({ id: "farmersdelight:cooking_pot"}, "minecraft:water_bucket", "tfc:wooden_bucket")
+  
+  event.replaceInput({ id: "advanced_ae:quantum_helmet"}, "minecraft:netherite_helmet", "gtceu:titanium_helmet")
+  event.replaceInput({ id: "advanced_ae:quantum_chest"}, "minecraft:netherite_chestplate", "gtceu:titanium_chestplate")
+  event.replaceInput({ id: "advanced_ae:quantum_leggings"}, "minecraft:netherite_leggings", "gtceu:titanium_leggings")
+  event.replaceInput({ id: "advanced_ae:quantum_boots"}, "minecraft:netherite_boots", "gtceu:titanium_boots")
+
 }
 

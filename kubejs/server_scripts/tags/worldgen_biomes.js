@@ -38,6 +38,10 @@ const addTFCBiomesToVanilla = (/** @type {TagEvent.Biome} */ event) => {
     "#minecraft:is_savanna",
     "#minecraft:is_lowland"
   ])
+  // WAYSTONE BIOME CHANGES
+  event.add("waystones:has_structure/mossy_waystone", ["tfc:plains", "tfc:hills", "tfc:rolling_hills"])
+  event.add("waystones:has_structure/sandy_waystone", ["tfc:badlands", "tfc:inverted_badlands", "tfc:shore"])
+  event.add("waystones:has_structure/waystone", ["tfc:mountains", "tfc:volcanic_mountains", "tfc:old_mountains", "tfc:volcanic_oceanic_mountains", "tfc:oceanic_mountains"])
 }
 
 const addStargateBiomes = (/** @type {TagEvent.Biome} */ event) => {

@@ -534,9 +534,8 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
         .where(" ", Block.getBlock("minecraft:air"))
         .build()
     )
-    .workableCasingRenderer(
+    .workableCasingModel(
       "gtceu:block/casings/gcym/atomic_casing" /*"gtceu:block/casings/gcym/atomic_casing"*/,
-      "gtceu:block/multiblock/implosion_compressor",
-      false
+      "gtceu:block/multiblock/implosion_compressor"
     )
 })

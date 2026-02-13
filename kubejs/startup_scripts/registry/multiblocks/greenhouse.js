@@ -74,9 +74,8 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
         .where("G", Predicates.blocks("ae2:quartz_glass"))
         .build()
     )
-    .workableCasingRenderer(
+    .workableCasingModel(
       "gtceu:block/casings/solid/machine_casing_solid_steel",
-      "gtceu:block/multiblock/implosion_compressor",
-      false
+      "gtceu:block/multiblock/implosion_compressor"
     )
 })

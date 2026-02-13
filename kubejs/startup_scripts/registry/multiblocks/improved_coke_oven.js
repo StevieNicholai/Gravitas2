@@ -29,5 +29,5 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
         )
         .build()
     )
-    .workableCasingRenderer("kubejs:block/casings/bronze_plated_bricks", "gtceu:block/multiblock/coke_oven", false)
+    .workableCasingModel("kubejs:block/casings/bronze_plated_bricks", "gtceu:block/multiblock/coke_oven")
 })

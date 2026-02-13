@@ -18,6 +18,6 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
     .langValue(`${GTValues.VA[tier]} Chemical Vapor Deposition`)
     .rotationState(RotationState.NON_Y_AXIS)
     .recipeType("chemical_vapor_deposition")
-    .workableTieredHullRenderer("gtceu:block/machines/chemical_vapor_depositor")
+    .workableTieredHullModel("gtceu:block/machines/chemical_vapor_depositor")
 })
 })

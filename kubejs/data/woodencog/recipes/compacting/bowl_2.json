@@ -1,9 +1,5 @@
 {
-    "conditions": [
-        {
-            "type": "forge:false"
-        }
-    ],
+    
     "type": "create:compacting",
     "ingredients": [
         {

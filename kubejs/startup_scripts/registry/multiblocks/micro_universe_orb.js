@@ -2881,5 +2881,5 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
         .where("#", Predicates.air())
         .build()
     )
-    .workableCasingRenderer("gtceu:block/casings/gcym/atomic_casing", "gtceu:block/multiblock/assembly_line", false)
+    .workableCasingModel("gtceu:block/casings/gcym/atomic_casing", "gtceu:block/multiblock/assembly_line")
 })

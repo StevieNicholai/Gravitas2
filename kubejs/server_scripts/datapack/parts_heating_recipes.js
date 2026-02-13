@@ -108,7 +108,7 @@ let addTFCPartHeatingRecipes = (/** @type {Internal.DataPackEventJS} */ event) =
 		{metal:"blue_steel",							heatCap:0.0198,			meltTemp:1250,	fluidId:"tfc:metal/blue_steel"						},
 		{metal:"damascus_steel",						heatCap:0.0198,			meltTemp:1270,	fluidId:"gtceu:damascus_steel"						},
 		// // GTCEu
-		{metal:"stainless_steel",						heatCap:0.0198,			meltTemp:1181,	fluidId:"gtceu:stainless_steel"						},
+		{metal:"stainless_steel",						heatCap:0.0198,			meltTemp:1181,	fluidId:"firmalife:metal/stainless_steel"						},
 		{metal:"vanadium_steel",						heatCap:0.0198,			meltTemp:1175,	fluidId:"gtceu:vanadium_steel"						}		
 	]
 

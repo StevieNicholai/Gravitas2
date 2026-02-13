@@ -17,7 +17,7 @@ GTCEuStartupEvents.registry("gtceu:machine", (event) => {
       builder
     .rotationState(RotationState.NON_Y_AXIS)
     .recipeType("plasma_centrifuge")
-    .workableTieredHullRenderer("gtceu:block/machines/plasma_centrifuge")
+    .workableTieredHullModel("gtceu:block/machines/plasma_centrifuge")
     .langValue(`${GTValues.VA[tier]} Plasma Centrifuge`)
     })
 })

@@ -40,7 +40,8 @@ const addFluidTags = (/** @type {TagEvent.Fluid} */ event) => {
     ])
 
     event.add("tfc:usable_in_jug", [
-        "gregitas:maple_syrup"
+        "gregitas:maple_syrup",
+        "gregitas:iced_pina_colada"
     ])
 
     event.add("tfc:usable_in_ingot_mold",
@@ -90,4 +91,25 @@ const addFluidTags = (/** @type {TagEvent.Fluid} */ event) => {
     plantTags.forEach(tag => {
         event.add(tag, plantFluids)
     })
+
+    event.add("gregitas:concrete", [
+        "gtceu:concrete",
+        "createdieselgenerators:white_cement",
+        "createdieselgenerators:gray_cement",
+        "createdieselgenerators:light_gray_cement",
+        "createdieselgenerators:yellow_cement",
+        "createdieselgenerators:orange_cement",
+        "createdieselgenerators:red_cement",
+        "createdieselgenerators:purple_cement",
+        "createdieselgenerators:blue_cement",
+        "createdieselgenerators:light_blue_cement",
+        "createdieselgenerators:green_cement",
+        "createdieselgenerators:lime_cement",
+        "createdieselgenerators:brown_cement",
+        "createdieselgenerators:black_cement",
+        "createdieselgenerators:pink_cement",
+        "createdieselgenerators:magenta_cement",
+        "createdieselgenerators:cyan_cement"
+
+    ])
 }

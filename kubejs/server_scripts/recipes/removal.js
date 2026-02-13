@@ -83,6 +83,17 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "gtceu:assembly_line/high_performance_computing_array"})
   event.remove({ id: "gtceu:assembly_line/ultimate_battery"})
 
+  // Hostile Neural Networks
+  event.remove({ id: "hostilenetworks:sim_chamber" })
+  event.remove({ id: "hostilenetworks:loot_fabricator"})
+  event.remove({ id: "hostilenetworks:deep_learner"})
+  event.remove({ id: "hostilenetworks:framework" })
+  event.remove({ id: "hostilenetworks:prediction_matrix"})
+
+  event.remove({ input: "hostilenetworks:overworld_prediction"})
+  event.remove({ input: "hostilenetworks:nether_prediction"})
+  event.remove({ input: "hostilenetworks:end_prediction"})
+
   //GT / Railcraft Tool Specific
   toolsToRemove.forEach((tool) => {
     event.remove({ output: `gtceu:${tool}_shovel`, mod: "gtceu" })
@@ -193,10 +204,10 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "create:crafting/kinetics/empty_blaze_burner"})
   event.remove({ id: "create:filling/sweet_roll"})
   event.remove({ id: "create:crafting/kinetics/belt_connector"})
-  event.remove({ id: "woodencog:crafting/kinetics/encased_fan"})
+  //event.remove({ id: "woodencog:crafting/kinetics/encased_fan"})
   event.remove({ id: "woodencog:heating/terracotta.json"})
-  event.remove({ id: "woodencog:crafting/kinetics/fluid_pipe"})
-  event.remove({ id: "woodencog:crafting/kinetics/fluid_pipe_vertical"})
+  //event.remove({ id: "woodencog:crafting/kinetics/fluid_pipe"})
+  //event.remove({ id: "woodencog:crafting/kinetics/fluid_pipe_vertical"})
   event.remove({ id: "create:crushing/crimsite"})
   event.remove({ id: "create:crushing/crimsite_recycling"})
   event.remove({ id: "create:crushing/ochrum"})
@@ -465,7 +476,19 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: 'wirelessredstone:frequency_tool'}) 
   event.remove({ id: 'wirelessredstone:frequency_sniffer'}) 
   event.remove({ id: 'wirelessredstone:redstone_receiver'}) 
-  event.remove({ id: 'wirelessredstone:redstone_transmitter'}) 
+  event.remove({ id: 'wirelessredstone:redstone_transmitter'})
+  
+  // NuclearCraft
+  event.remove({ id: 'nuclearcraft:fission_reactor_casing'})
+  event.remove({ id: 'nuclearcraft:fission_reactor_controller'})
+  event.remove({ id: 'nuclearcraft:fission_reactor_port'})
+  event.remove({ id: 'nuclearcraft:empty_heat_sink'})
+  event.remove({ id: 'nuclearcraft:fission_reactor_solid_fuel_cell'})
+
+  event.remove({ id: 'nuclearcraft:fusion_reactor_casing'})
+  event.remove({ id: 'nuclearcraft:basic_electromagnet'})
+  event.remove({ id: 'nuclearcraft:basic_rf_amplifier'})
+  event.remove({ id: 'nuclearcraft:fusion_reactor_connector'})
 
   //more red
 
@@ -617,4 +640,31 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "minecraft:crossbow" })
   event.remove({ id: "headlight:headlight"})
   event.remove({ id: "buildinggadgets2:gadget_cut_paste"})
+  event.remove({ id: "scguns:create/recycling/callwell_conversion_recycling"})
+  event.remove({ id: "scguns:create/mechanical_crafting/prima_materia"})
+  event.remove({ id: "scguns:anthralite/anthralite_knife_smithing"})
+
+  event.remove({ id: "projectred_transmission:red_alloy_wire"})
+  event.remove({ id: "gtceu:chemical_reactor/ultra_high_grade_hypogen_separation_agent"})
+
+  //Coins
+  event.remove({ id: /^createdeco:pressing\/coins\/.*_coin/})
+  event.remove({ id: "workerstfc:anvil/coins1"})
+  event.remove({ id: "workerstfc:anvil/coins2"})
+  event.remove({ id: "workerstfc:anvil/coins3"})
+  event.remove({ id: "workerstfc:anvil/coins4"})
+
+  //Misc
+  event.remove({ id: "create:milling/bone"})
+  event.remove({ id: "minecraft:brewing_stand"})
+  event.remove({ id: "tfc_ie_addon:welding/aluminum_double_ingot"})
+  event.remove({ id: "tfc_ie_addon:crafting/metal/block/uranium"})
+  event.remove({ id: "nuclearcraft:alloy_smelter/dusts_steel-dusts_chromium"})
+  event.remove({ id: "nuclearcraft:alloy_smelter/ingots_steel-ingots_chromium"})
+  event.remove({ id: "farmersdelight:sweet_berry_cheesecake"})
+  event.remove({ id: "farmersdelight:pie_crust"})
+  event.remove({ id: "farmersdelight:integration/create/mixing/pie_crust_from_mixing"})
+  event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._4/`})
+  event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._3/`})
+  event.remove({ id: "farmersdelight:cutting/saddle"})
 }
