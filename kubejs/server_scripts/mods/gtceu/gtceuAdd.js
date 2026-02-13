@@ -1472,12 +1472,30 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
   tfcStone.forEach((stone) => {
     event.recipes.gtceu
       .rock_breaker(`loose_${stone}`)
+      .notConsumable(`tfc:rock/loose/${stone}`)
+      .itemOutputs(`tfc:rock/loose/${stone}`)
+      .duration(16)
+      .EUt(LV)
+      .adjacentFluids('minecraft:water')
+      .adjacentFluids('minecraft:lava')
+
+    event.recipes.gtceu
+      .rock_breaker(`cobble_${stone}`)
+      .notConsumable(`tfc:rock/cobble/${stone}`)
+      .itemOutputs(`tfc:rock/cobble/${stone}`)
+      .duration(16)
+      .EUt(LV)
+      .adjacentFluids('minecraft:water')
+      .adjacentFluids('minecraft:lava')  
+
+    event.recipes.gtceu
+      .rock_breaker(`raw_${stone}`)
       .notConsumable(`tfc:rock/raw/${stone}`)
       .itemOutputs(`tfc:rock/raw/${stone}`)
       .duration(16)
       .EUt(LV)
       .adjacentFluids('minecraft:water')
-      .adjacentFluids('minecraft:lava')
+      .adjacentFluids('minecraft:lava')    
   })
  
   //deepslate

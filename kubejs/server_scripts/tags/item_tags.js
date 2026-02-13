@@ -506,4 +506,12 @@ const addItemTags = (/** @type {TagEvent.Item} */ event) => {
   event.add("gtceu:tools/crafting_saws", "#tfc:saws")
   event.add("gtceu:tools/crafting_hammers", "#tfc:hammers")
   event.add("gtceu:tools/crafting_knives", "#tfc:knives")
+
+  //armors
+  event.removeAll("tombstone:lootable/armor")
+  event.removeAll("tombstone:lootable/vanilla_armor")
+  
+  //tools
+  event.removeAll("tombstone:lootable/tool")
+  event.removeAll("tombstone:lootable/vanilla_tool")
 }

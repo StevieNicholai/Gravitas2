@@ -666,4 +666,5 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "farmersdelight:integration/create/mixing/pie_crust_from_mixing"})
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._4/`})
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._3/`})
+  event.remove({ id: "farmersdelight:cutting/saddle"})
 }
