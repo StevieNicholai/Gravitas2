@@ -667,4 +667,6 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._4/`})
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._3/`})
   event.remove({ id: "farmersdelight:cutting/saddle"})
+  event.remove({ id: "nuclearcraft:alloy_smelter/ingots_iron-ingots_carbon_manganese"})
+  event.remove({ id: "nuclearcraft:alloy_smelter/dusts_iron-dusts_carbon_manganese"})
 }
