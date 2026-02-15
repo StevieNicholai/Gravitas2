@@ -437,6 +437,8 @@
     "gravitas.quest.steel.refinery": "Refinery",
     "gravitas.quest.steel.excavator": "Excavator",
     "gravitas.quest.steel.bucket_wheel": "Bucket Wheel",
+	"gravitas.quest.steel.grist_mill": "Grist Mill",
+	"gravitas.quest.steel.beamhouse": "Beamhouse",
     "gravitas.quest.steel.desc.blast_furnace": "This is the minimum amount of items needed for the smallest Blast Furnace. You will need some sort of fluid container underneath the blast furnace to collect the output, like a crucible for example.\\n\\n&6You need Bellows to increase the max temperature of the Blast Furnace.",
     "gravitas.quest.steel.desc.early_create.1": "You need these 2 things to make plates and smelt Aluminum Dust, which you get from crushing cryolite with an engineers hammer.",
     "gravitas.quest.steel.desc.early_create.2": "You then place a bucket of lava in front of the fan with a slab that can't burn and a block behind.",
