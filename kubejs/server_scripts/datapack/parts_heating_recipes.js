@@ -352,6 +352,7 @@ let addTFCPartHeatingRecipes = (/** @type {Internal.DataPackEventJS} */ event) =
 			})
 		})
 	})
+	addTFCHeatCapability("tfc:food/dried_kelp",300)
 	
 	// All the other parts:
 	let parts = [

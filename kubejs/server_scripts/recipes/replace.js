@@ -385,5 +385,6 @@ event.replaceInput(
   event.replaceInput({ id: "simpleradio:spuddie_talkie"}, "minecraft:potato", "tfc:food/potato")
   event.replaceInput({ id: "simpleradio:spuddie_talkie"}, "minecraft:iron_ingot", "createadditions:redstone_relay")
   event.replaceInput({ id: "simpleradio:spuddie_talkie"}, "simpleradio:copper_wire", "gtceu:fine_copper_wire")
+  event.replaceInput({ mod: "hang_glider"}, "minecraft:iron_ingot", "#forge:ingots/aluminium")
 }
 
