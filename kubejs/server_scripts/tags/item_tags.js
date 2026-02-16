@@ -527,5 +527,4 @@ const addItemTags = (/** @type {TagEvent.Item} */ event) => {
   event.removeAll("tombstone:lootable/tool")
   event.removeAll("tombstone:lootable/vanilla_tool")
 
-  event.add("tfc:compost_browns_low", ["tfcaffeinated:food/coffee_beans", "tfcaffeinated:food/roasted_coffee_beans"])
 }
