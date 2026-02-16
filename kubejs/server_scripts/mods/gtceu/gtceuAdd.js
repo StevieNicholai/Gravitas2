@@ -1426,17 +1426,7 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
       .duration(4 * 20)
       .EUt(8)
   })
-//FLux
 
-  event.recipes.gtceu
-    .macerator("gregitas:flux_dust")
-    .itemInputs(Ingredient.of("#tfc:fluxstone", 1))
-    .itemOutputs(Item.of("tfc:powder/flux", 4))
-    .circuit(6)
-    .duration(200)
-    .EUt(LV)
-
-    
   //wireless chargers
 
   event.recipes.gtceu
@@ -1587,7 +1577,7 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
  
   createstoneh.forEach((createstoneh) => {
     event.recipes.gtceu
-      .rock_breaker(`raw_${createstoneh}`)
+      .rock_breaker(`create_${createstoneh}`)
       .notConsumable(`create:${createstoneh}`)
       .itemOutputs(`create:${createstoneh}`)
       .duration(16)
