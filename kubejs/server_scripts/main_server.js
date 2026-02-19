@@ -5,6 +5,7 @@ ServerEvents.recipes((event) => {
   dfcRecipesRemoval(event)
   replaceRecipes(event)
   dfcRecipesReplace(event)
+  tfcRecipesReplace(event)
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
   addCollapse(event)

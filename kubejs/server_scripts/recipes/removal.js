@@ -663,7 +663,6 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "create:milling/bone"})
   event.remove({ id: "minecraft:brewing_stand"})
   event.remove({ id: "tfc_ie_addon:welding/aluminum_double_ingot"})
-  event.remove({ id: "tfc_ie_addon:crafting/metal/block/uranium"})
   event.remove({ id: "nuclearcraft:alloy_smelter/dusts_steel-dusts_chromium"})
   event.remove({ id: "nuclearcraft:alloy_smelter/ingots_steel-ingots_chromium"})
   event.remove({ id: "farmersdelight:sweet_berry_cheesecake"})
