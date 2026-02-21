@@ -616,8 +616,8 @@ let createAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
 	})
 	
 	TFCGrains.forEach((grain) => {
-		event.recipes.create.mixing([`tfc:food/${grain}_dough`],
-			[Item.of(`tfc:food/${grain}_flour`), Fluid.of('minecraft:water', 100)],
+		event.recipes.create.splashing([`tfc:food/${grain}_dough`],
+			[Item.of(`tfc:food/${grain}_flour`)],
 			250)
 	})
     event.recipes.create.mixing([Fluid.of('gregitas:iced_pina_colada', 250)], [Fluid.of('firmalife:pina_colada', 250), 'gregitas:crushed_frostburn'], 10)
