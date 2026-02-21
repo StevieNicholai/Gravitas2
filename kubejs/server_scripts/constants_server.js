@@ -38,6 +38,88 @@ let loadRegistryVariables = (/** @type {Internal.SimpleLevelEventJS} */ event) =
   $TreeForest = event.level.registryAccess().registry($Registries.CONFIGURED_FEATURE).get().get("tfc:forest")
   $ForestConfigObj = $TreeForest.config()
 }
+global.immGeoOres = [
+  {
+    ore:"copper", 
+    fluid:"tfc:metal/copper"
+  },
+  {
+    ore:"lead",
+    fluid:"tfc_ie_addon:metal/lead",
+  },
+  {
+    ore:"chalcopyrite",
+    fluid:"tfc:metal/copper"
+  },
+  {
+    ore:"platinum",
+    fluid:"dfc:metal/dfc_platinum"
+  },
+  {
+    ore:"silver",
+    fluid:"tfc:metal/silver"
+  },
+  {
+    ore:"gold",
+    fluid:"tfc:metal/gold"
+  },
+  {
+    ore:"bauxite",
+    fluid:"tfc_ie_addon:metal/aluminum"
+  },
+  {
+    ore:"cassiterite",
+    fluid:"tfc:metal/tin"
+  },
+  {
+    ore:"hematite",
+    fluid:"tfc:metal/cast_iron"
+  },
+  {
+    ore:"magnetite",
+    fluid:"tfc:metal/cast_iron"
+  },
+  {
+    ore:"sphalerite",
+    fluid:"tfc:metal/zinc"
+  },
+  {
+    ore:"uraninite",
+    fluid:"tfc_ie_addon:metal/uranium"
+  }
+]
+
+global.immGeoOresMelts = {
+  "copper": 1080,
+  "hematite": 1535,
+  "lead": 327,
+  "chalcopyrite": 1080,
+  "platinum": 1535,
+  "silver": 960,
+  "gold": 1060,
+  "bauxite": 1535,
+  "cassiterite": 230,
+  "magnetite": 1535,
+  "sphalerite": 420,
+  "uraninite": 1132
+
+
+}
+
+global.immGeoOresCap = {
+  "copper": 1.143,
+  "hematite": 1.143,
+  "lead": 1.143,
+  "chalcopyrite": 1.143,
+  "platinum": 0.543,
+  "silver": 0.833,
+  "gold": 0.667,
+  "bauxite": 1.143,
+  "cassiterite": 2.857,
+  "magnetite": 1.143,
+  "sphalerite": 1.905,
+  "uraninite": 1.143
+}
 
 let enderTC = [
   {

@@ -15,6 +15,8 @@ const replaceTFCHeatingAndCasting = (/** @type {Internal.RecipesEventJS} */ even
     30: 48,
     70: 96
   }
+    
+
   let convertFluidValues = (oldValue) => {
     let newValue = convertMap[oldValue]
     if (!newValue) {
@@ -82,6 +84,47 @@ const replaceTFCHeatingAndCasting = (/** @type {Internal.RecipesEventJS} */ even
     fluidIngredient.computeIfPresent("amount", (key, val) => convertFluidValues(val))
     r.fluid(fluidIngredient)
   })
+// Immersive Geo ores fix 
+
+  global.immGeoOres.forEach((ore) => {
+    event.custom({
+      type: "tfc:heating",
+      ingredient: {
+        item: `immersivegeology:poor_ore_${ore.ore}`
+      },
+      result_fluid: {
+        fluid: `${ore.fluid}`,
+        amount: 16
+      },
+      temperature: global.immGeoOresMelts[ore.ore]
+    }).id(`gregitas:tfc/heating/immersive_geology/poor_${ore.ore}`)
+  
+  event.custom({
+      type: "tfc:heating",
+      ingredient: {
+        item: `immersivegeology:normal_ore_${ore.ore}`
+      },
+      result_fluid: {
+        fluid: `${ore.fluid}`,
+        amount: 36
+      },
+      temperature: global.immGeoOresMelts[ore.ore]
+    }).id(`gregitas:tfc/heating/immersive_geology/normal_${ore.ore}`)
+  
+  event.custom({
+      type: "tfc:heating",
+      ingredient: { item: `immersivegeology:rich_ore_${ore.ore}` },
+      result_fluid: {
+        fluid: `${ore.fluid}`,   
+        amount: 48
+      },
+      temperature: global.immGeoOresMelts[ore.ore]
+    }).id(`gregitas:tfc/heating/immersive_geology/rich_${ore.ore}`)
+  
+ 
+  })
+
+
 
   //Aluminum heating Fix
   event.custom({
