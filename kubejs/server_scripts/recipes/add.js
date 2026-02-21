@@ -2976,4 +2976,44 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
     .EUt(80)    
 
 
+    event.custom({
+      type:"firmalife:mixing_bowl",
+      ingredients:[
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            item: "tfc:food/cooked_rabbit"
+          }   
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          item: "minecraft:rabbit_foot"
+        }
+
+      ],
+    output_item: {
+    item: "minecraft:rabbit_stew",
+    count: 1
+    }
+
+    }
+
+  )
 }
