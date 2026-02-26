@@ -2606,6 +2606,60 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
 
   // Nuclearcraft Recipes
 
+  // Basic Materials
+
+ event.recipes.gtceu
+    .alloy_smelter("gregitas:lead-carbide")
+    .itemInputs("#forge:ingots/lead", "#forge:dusts/graphite")
+    .itemOutputs("gregitas:lead_carbide_ingot")
+    .duration(400)
+    .EUt(HV)
+
+ event.recipes.gtceu.assembler("gregitas:chassis")
+    .itemInputs("gtceu:steel_frame", "6x gtceu:lead_plate", "#gtceu:circuits/hv")
+    .itemOutputs("nuclearcraft:chassis")
+    .duration(400)
+    .EUt(HV)
+
+  event.recipes.gtceu.assembler("gregitas:coppercoil")
+    .itemInputs("16x gtceu:fine_copper_wire", "2x gtceu:iron_rod")
+    .itemOutputs("2x nuclearcraft:coil_copper")
+    .duration(200)
+    .EUt(HV)
+    
+  event.recipes.gtceu
+    .alloy_smelter("gregitas:ferroboron")
+    .itemInputs("#forge:ingots/steel", "nuclearcraft:boron_ingot")
+    .itemOutputs("2x nuclearcraft:ferroboron_ingot")
+    .duration(60)
+    .EUt(HV)
+  
+  event.recipes.gtceu
+    .alloy_smelter("gregitas:ferroborondusts")
+    .itemInputs("#forge:dusts/steel", "#forge:dusts/boron")
+    .itemOutputs("2x nuclearcraft:ferroboron_ingot")
+    .duration(60)
+    .EUt(HV)
+  
+  event.recipes.gtceu.assembler("gregitas:nuclearcraftmotor")
+    .itemInputs("4x gtceu:steel_plate", "2x gtceu:copper_bolt", "gtceu:iron_rod", "2x nuclearcraft:coil_copper")
+    .itemOutputs("nuclearcraft:motor")
+    .duration(200)
+    .EUt(HV)
+  
+  event.recipes.gtceu.assembler("gregitas:actuator")
+    .itemInputs("2x nuclearcraft:ferroboron_plate", "minecraft:piston", "8x gtceu:fine_copper_wire", "2x gtceu:steel_bolt") 
+    .itemOutputs("nuclearcraft:actuator")
+    .duration(200)
+    .EUt(HV)
+     
+  event.recipes.gtceu
+    .bender("gregitas:ferroboronplates")
+    .itemInputs("nuclearcraft:ferroboron_ingot")
+    .itemOutputs("nuclearcraft:ferroboron_plate")
+    .duration(200)
+    .EUt(HV)
+
   // Fission
   event.recipes.gtceu.mixer("gregitas:fission_reactor_casing")
     .itemInputs("gtceu:steel_frame", "6x gtceu:lead_plate", "6x gtceu:steel_plate")
