@@ -2233,26 +2233,6 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
 
   //alabaster
 
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster`)
-      .itemInputs(`tfc:alabaster/raw`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/raw/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
-
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster_bricks`)
-      .itemInputs(`tfc:alabaster/bricks`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/bricks/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
-
   event.recipes.gtceu
     .mixer(`gregitas:mixer_tfc_alabaster`)
     .itemInputs(`tfc:ore/gypsum`)
@@ -2260,16 +2240,6 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
     .itemOutputs(`tfc:alabaster/raw`)
     .duration(20)
     .EUt(LV)
-
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster_polished`)
-      .itemInputs(`tfc:alabaster/polished`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/polished/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
 
   // TFC gem macerating
   

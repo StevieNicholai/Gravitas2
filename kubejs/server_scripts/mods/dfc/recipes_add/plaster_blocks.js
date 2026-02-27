@@ -138,89 +138,23 @@ const dfcRecipeAddPlasterBlocks = (/** @type {Internal.RecipesEventJS} */ event)
 
   // === COLORED PLASTER BLOCKS VIA DYEING ===
 
+  // === COLORED PLASTER BLOCKS VIA DYEING ===
+
   const plasterVariants = [
-    { name: 'smooth', suffix: '' },
-    { name: 'smooth', suffix: '_stairs' },
-    { name: 'smooth', suffix: '_slab' },
-    { name: 'pillar', suffix: '' }
+    { idSuffix: 'smooth',        tag: '#gregitas:plaster_blocks/smooth',  name: 'smooth', suffix: '',        fluidScale: 1 },
+    { idSuffix: 'smooth_stairs', tag: '#gregitas:plaster_stairs/smooth',  name: 'smooth', suffix: '_stairs', fluidScale: 0.75 },
+    { idSuffix: 'smooth_slab',   tag: '#gregitas:plaster_slabs/smooth',   name: 'smooth', suffix: '_slab',   fluidScale: 0.5 },
+    { idSuffix: 'pillar',        tag: '#gregitas:plaster_blocks/pillar',  name: 'pillar', suffix: '',        fluidScale: 1 },
   ]
 
   plasterVariants.forEach(variant => {
-    // Determine the appropriate tag for this variant
-    let tagName = ''
-    if (variant.name === 'smooth' && variant.suffix === '') {
-      tagName = '#gregitas:plaster_blocks/smooth'
-    } else if (variant.name === 'smooth' && variant.suffix === '_stairs') {
-      tagName = '#gregitas:plaster_stairs/smooth'
-    } else if (variant.name === 'smooth' && variant.suffix === '_slab') {
-      tagName = '#gregitas:plaster_slabs/smooth'
-    } else if (variant.name === 'pillar' && variant.suffix === '') {
-      tagName = '#gregitas:plaster_blocks/pillar'
-    }
-
-    dfcColors.forEach(color => {
-      // Chemical Bath: any plaster + GT dye → colored plaster (1s = 20 ticks, 140 EU = 7 EU/t)
-      event.recipes.gtceu
-        .chemical_bath(`plaster_${variant.name}_dye_${color}${variant.suffix}`)
-        .itemInputs(tagName)
-        .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-        .itemOutputs(`dfc:plaster/${variant.name}/${color}${variant.suffix}`)
-        .duration(20)
-        .EUt(7)
-
-      // TFC Barrel: plain plaster + dye fluid → colored plaster (50s = 1000 ticks)
-      event.custom({
-        type: 'tfc:barrel_sealed',
-        input_item: {
-          ingredient: { tag: tagName.substring(1) }
-        },
-        input_fluid: {
-          ingredient: `tfc:${color}_dye`,
-          amount: 25
-        },
-        output_item: {
-          item: `dfc:plaster/${variant.name}/${color}${variant.suffix}`
-        },
-        duration: 1000
-      }).id(`gregitas:barrel/plaster_${variant.name}_dye_${color}${variant.suffix}`)
+    addDyeRecipes(event, {
+      idPrefix: `plaster_${variant.idSuffix}`,
+      input: variant.tag,
+      baseInput: `dfc:plaster/${variant.name}/plain${variant.suffix}`,
+      coloredOutput: color => `dfc:plaster/${variant.name}/${color}${variant.suffix}`,
+      bleachedOutput: `dfc:plaster/${variant.name}/plain${variant.suffix}`,
+      fluidScale: variant.fluidScale,
     })
   })
-
-  // === PLASTER BLEACHING ===
-
-  // Smooth blocks: colored plaster → plain plaster (20s = 400 ticks, 800 EU = 2 EU/t)
-  event.recipes.gtceu
-    .chemical_bath('plaster_smooth_blocks_bleach')
-    .itemInputs('#gregitas:plaster_blocks/smooth')
-    .inputFluids(Fluid.of('gtceu:chlorine', 50))
-    .itemOutputs('dfc:plaster/smooth/plain')
-    .duration(400)
-    .EUt(2)
-
-  // Smooth stairs: colored plaster stairs → plain plaster stairs (20s = 400 ticks, 800 EU = 2 EU/t)
-  event.recipes.gtceu
-    .chemical_bath('plaster_smooth_stairs_bleach')
-    .itemInputs('#gregitas:plaster_stairs/smooth')
-    .inputFluids(Fluid.of('gtceu:chlorine', 50))
-    .itemOutputs('dfc:plaster/smooth/plain_stairs')
-    .duration(400)
-    .EUt(2)
-
-  // Smooth slabs: colored plaster slabs → plain plaster slabs (20s = 400 ticks, 800 EU = 2 EU/t)
-  event.recipes.gtceu
-    .chemical_bath('plaster_smooth_slabs_bleach')
-    .itemInputs('#gregitas:plaster_slabs/smooth')
-    .inputFluids(Fluid.of('gtceu:chlorine', 50))
-    .itemOutputs('dfc:plaster/smooth/plain_slab')
-    .duration(400)
-    .EUt(2)
-
-  // Pillar blocks: colored plaster pillar → plain plaster pillar (20s = 400 ticks, 800 EU = 2 EU/t)
-  event.recipes.gtceu
-    .chemical_bath('plaster_pillar_blocks_bleach')
-    .itemInputs('#gregitas:plaster_blocks/pillar')
-    .inputFluids(Fluid.of('gtceu:chlorine', 50))
-    .itemOutputs('dfc:plaster/pillar/plain')
-    .duration(400)
-    .EUt(2)
 }

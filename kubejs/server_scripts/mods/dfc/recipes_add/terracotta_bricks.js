@@ -118,50 +118,23 @@ const dfcRecipeAddTerracottaBricks = (/** @type {Internal.RecipesEventJS} */ eve
   // === TERRACOTTA BRICK DYEING ===
 
   const terracottaBrickVariants = [
-    { name: 'blocks', suffix: '' },
-    { name: 'slabs', suffix: '_slab' },
-    { name: 'stairs', suffix: '_stairs' },
-    { name: 'walls', suffix: '_wall' }
+    { name: 'blocks', suffix: '', fluidScale: 1 },
+    { name: 'slabs', suffix: '_slab', fluidScale: 0.5 },
+    { name: 'stairs', suffix: '_stairs', fluidScale: 0.75 },
+    { name: 'walls', suffix: '_wall', fluidScale: 1 },
   ]
 
   terracottaBrickVariants.forEach(variant => {
-    dfcColors.forEach(color => {
-      // Since white is the default, don't allow dyeing to it
-      if (color == 'white') return
-      
-      // Dyeing recipes: any terracotta brick + dye → colored brick (1s = 20 ticks, 140 EU = 7 EU/t)
-      event.recipes.gtceu
-        .chemical_bath(`dfc_terracotta_brick_${variant.name}_dye_${color}`)
-        .itemInputs(`#gregitas:terracotta_brick_${variant.name}`)
-        .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-        .itemOutputs(`dfc:ceramic/bricks/terracotta_${color}${variant.suffix}`)
-        .duration(20)
-        .EUt(7)
-
-      event.custom({
-        type: 'tfc:barrel_sealed',
-        input_item: {
-          ingredient: {
-            tag: `gregitas:terracotta_brick_${variant.name}`
-          }
-        },
-        input_fluid: {
-          ingredient: `tfc:${color}_dye`,
-          amount: 25
-        },
-        output_item: {
-          item: `dfc:ceramic/bricks/terracotta_${color}${variant.suffix}`
-        },
-        duration: 1000
-      }).id(`gregitas:barrel/terracotta_brick_${variant.name}_dye_${color}`)
+    // Since white is the default, don't allow dyeing to it
+    addDyeRecipes(event, {
+      idPrefix: `dfc_terracotta_brick_${variant.name}`,
+      input: `#gregitas:terracotta_brick_${variant.name}`,
+      baseInput: `dfc:ceramic/bricks/terracotta_white${variant.suffix}`,
+      bleachInput: `#gregitas:terracotta_brick_${variant.name}_colored`,
+      colors: dfcColors.filter(c => c !== "white"),
+      coloredOutput: color => `dfc:ceramic/bricks/terracotta_${color}${variant.suffix}`,
+      bleachedOutput: `dfc:ceramic/bricks/terracotta_white${variant.suffix}`,
+      fluidScale: variant.fluidScale,
     })
-
-    event.recipes.gtceu
-      .chemical_bath(`dfc_terracotta_bricks_${variant.name}_bleach`)
-      .itemInputs(`#gregitas:terracotta_brick_${variant.name}`)
-      .inputFluids(Fluid.of('gtceu:chlorine', 50))
-      .itemOutputs(`dfc:ceramic/bricks/terracotta_white${variant.suffix}`)
-      .duration(400)
-      .EUt(2)
   })
 }

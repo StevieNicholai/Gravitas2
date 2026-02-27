@@ -31,6 +31,7 @@ const dfcRecipeAddConcrete = (/** @type {Internal.RecipesEventJS} */ event) => {
 
   // === CONCRETE DYEING ===
 
+  // Vanilla concrete uses a special tag and only has GT chemical_bath for white; barrel for all colors
   // Chemical Bath: any concrete + white dye → white concrete (1s = 20 ticks, 140 EU = 7 EU/t)
   event.recipes.gtceu
     .chemical_bath('concrete_dye_white')
@@ -40,70 +41,70 @@ const dfcRecipeAddConcrete = (/** @type {Internal.RecipesEventJS} */ event) => {
     .duration(20)
     .EUt(7)
 
-  // TFC Barrel: any concrete + dye fluid → colored concrete (50s = 1000 ticks)
-  dfcColors.forEach(color => {
-    event.custom({
-      type: 'tfc:barrel_sealed',
-      input_item: {
-        ingredient: {
-          tag: 'forge:concretes'
-        }
-      },
-      input_fluid: {
-        ingredient: `tfc:${color}_dye`,
-        amount: 25
-      },
-      output_item: {
-        item: `minecraft:${color}_concrete`
-      },
-      duration: 1000
-    }).id(`gregitas:barrel/concrete_dye_${color}`)
-
-    // Chemical Bath: any concrete slab + GT dye → colored concrete slab (1s = 20 ticks, 140 EU = 7 EU/t)
-    event.recipes.gtceu
-      .chemical_bath(`concrete_slab_dye_${color}`)
-      .itemInputs('#dfc:concrete/slab')
-      .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-      .itemOutputs(`dfc:concrete/slab/${color}`)
-      .duration(20)
-      .EUt(7)
-    
-    // Chemical Bath: any concrete bricks + GT dye → colored concrete 1s (bricks = 20 ticks, 140 EU = 7 EU/t)
-    event.recipes.gtceu
-      .chemical_bath(`concrete_bricks_dye_${color}`)
-      .itemInputs('#dfc:concrete/bricks')
-      .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-      .itemOutputs(`dfc:concrete/bricks/${color}`)
-      .duration(20)
-      .EUt(7)
+  // TFC Barrel: plain concrete + dye fluid → colored concrete
+  addBarrelDye(event, {
+    idPrefix: 'concrete',
+    input: 'dfc:concrete/smooth/plain',
+    coloredOutput: color => `minecraft:${color}_concrete`,
   })
 
-  // === GT CONCRETE BLEACHING ===
+  // GT Mixer + Create Mixing: plain DFC concrete + TFC dye → colored vanilla concrete
+  addGTMixDye(event, {
+    idPrefix: 'concrete',
+    input: 'dfc:concrete/smooth/plain',
+    coloredOutput: color => `minecraft:${color}_concrete`,
+  })
+  addCreateMixDye(event, {
+    idPrefix: 'concrete',
+    input: 'dfc:concrete/smooth/plain',
+    coloredOutput: color => `minecraft:${color}_concrete`,
+  })
 
-  // Chemical Bath: any concrete + chlorine → plain concrete (20s = 400 ticks, 800 EU = 2 EU/t, 20mb chlorine)
+  // Chemical Bath: colored concrete + chlorine → plain concrete (20s = 400 ticks, 800 EU = 2 EU/t, 20mb chlorine)
   event.recipes.gtceu
     .chemical_bath('concrete_bleach_to_plain')
-    .itemInputs('#forge:concretes')
+    .itemInputs('#gregitas:colored_concrete')
     .inputFluids(Fluid.of('gtceu:chlorine', 20))
     .itemOutputs('dfc:concrete/smooth/plain')
     .duration(400)
     .EUt(2)
 
-  // Chemical Bath: any concrete slab + chlorine → plain concrete slab (20s = 400 ticks, 800 EU = 2 EU/t, 20mb chlorine)
-  event.recipes.gtceu
-    .chemical_bath('concrete_slab_bleach_to_plain')
-    .itemInputs('#dfc:concrete/slab')
-    .inputFluids(Fluid.of('gtceu:chlorine', 20))
-    .itemOutputs('dfc:concrete/slab/plain')
-    .duration(400)
-    .EUt(2)
+  // Lye bleach: colored concrete → plain concrete (barrel + GT mixer + Create mixer)
+  addBarrelBleach(event, {
+    idPrefix: 'concrete',
+    input: '#gregitas:colored_concrete',
+    bleachedOutput: 'dfc:concrete/smooth/plain',
+  })
+  addGTMixBleach(event, {
+    idPrefix: 'concrete',
+    input: '#gregitas:colored_concrete',
+    bleachedOutput: 'dfc:concrete/smooth/plain',
+  })
+  addCreateMixBleach(event, {
+    idPrefix: 'concrete',
+    input: '#gregitas:colored_concrete',
+    bleachedOutput: 'dfc:concrete/smooth/plain',
+  })
 
-  // Chemical Bath: any concrete bricks + chlorine → plain concrete bricks (20s = 400 ticks, 800 EU = 2 EU/t, 20mb chlorine)
-  event.recipes.gtceu
-    .chemical_bath('concrete_bricks_bleach_to_plain')
-    .itemInputs('#dfc:concrete/bricks')
-    .inputFluids(Fluid.of('gtceu:chlorine', 20))
-    .itemOutputs('dfc:concrete/bricks/plain')
-    .duration(400)
-    .EUt(2)
+  // DFC concrete slabs and bricks: full dye/bleach suite from plain
+  addDyeRecipes(event, {
+    idPrefix: 'concrete_slab',
+    input: '#dfc:concrete/slab',
+    baseInput: 'dfc:concrete/slab/plain',
+    bleachInput: '#dfc:concrete/colored_slab',
+    coloredOutput: color => `dfc:concrete/slab/${color}`,
+    bleachedOutput: 'dfc:concrete/slab/plain',
+    chlorineAmount: 20,
+    fluidScale: 0.5,
+  })
+
+  addDyeRecipes(event, {
+    idPrefix: 'concrete_bricks',
+    input: '#dfc:concrete/bricks',
+    baseInput: 'dfc:concrete/bricks/plain',
+    bleachInput: '#dfc:concrete/colored_bricks',
+    coloredOutput: color => `dfc:concrete/bricks/${color}`,
+    bleachedOutput: 'dfc:concrete/bricks/plain',
+    chlorineAmount: 20,
+  })
 }

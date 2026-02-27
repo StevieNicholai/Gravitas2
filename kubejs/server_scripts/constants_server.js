@@ -378,3 +378,144 @@ let tfcMetalFluids = [
   "wrought_iron",
   "zinc"
 ]
+
+function addChemBathDye(event, opts) {
+  const idPrefix = opts.idPrefix
+  const input = opts.input
+  const coloredOutput = opts.coloredOutput
+  const colors = opts.colors !== undefined ? opts.colors : dfcColors
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const dyeFluidAmount = Math.round((opts.dyeFluidAmount !== undefined ? opts.dyeFluidAmount : 18) * fluidScale)
+  colors.forEach(function(color) {
+    event.recipes.gtceu
+      .chemical_bath(idPrefix + "_dye_" + color)
+      .itemInputs(input)
+      .inputFluids(Fluid.of("gtceu:" + color + "_dye", dyeFluidAmount))
+      .itemOutputs(coloredOutput(color))
+      .duration(20)
+      .EUt(7)
+  })
+}
+
+function addBarrelDye(event, opts) {
+  const idPrefix = opts.idPrefix
+  const rawInput = opts.baseInput !== undefined ? opts.baseInput : opts.input
+  const coloredOutput = opts.coloredOutput
+  const colors = opts.colors !== undefined ? opts.colors : dfcColors
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const tfcDyeAmount = Math.round((opts.tfcDyeAmount !== undefined ? opts.tfcDyeAmount : 25) * fluidScale)
+  const inputIngredient = rawInput.startsWith("#") ? { tag: rawInput.slice(1) } : { item: rawInput }
+  colors.forEach(function(color) {
+    event.custom({
+      type: "tfc:barrel_sealed",
+      input_item: { ingredient: inputIngredient },
+      input_fluid: { ingredient: "tfc:" + color + "_dye", amount: tfcDyeAmount },
+      output_item: { item: coloredOutput(color) },
+      duration: 1000,
+    }).id("gregitas:barrel/" + idPrefix + "_dye_" + color)
+  })
+}
+
+function addChemBathBleach(event, opts) {
+  const bleachedOutput = opts.bleachedOutput
+  if (!bleachedOutput) return
+  const idPrefix = opts.idPrefix
+  const input = opts.bleachInput !== undefined ? opts.bleachInput : opts.input
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const chlorineAmount = Math.round((opts.chlorineAmount !== undefined ? opts.chlorineAmount : 50) * fluidScale)
+  event.recipes.gtceu
+    .chemical_bath(idPrefix + "_bleach")
+    .itemInputs(input)
+    .inputFluids(Fluid.of("gtceu:chlorine", chlorineAmount))
+    .itemOutputs(bleachedOutput)
+    .duration(400)
+    .EUt(2)
+}
+
+function addBarrelBleach(event, opts) {
+  const bleachedOutput = opts.bleachedOutput
+  if (!bleachedOutput) return
+  const idPrefix = opts.idPrefix
+  const input = opts.bleachInput !== undefined ? opts.bleachInput : opts.input
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const lyeAmount = Math.round((opts.lyeAmount !== undefined ? opts.lyeAmount : 75) * fluidScale)
+  const inputIngredient = input.startsWith("#") ? { tag: input.slice(1) } : { item: input }
+  event.custom({
+    type: "tfc:barrel_sealed",
+    input_item: { ingredient: inputIngredient },
+    input_fluid: { ingredient: "tfc:lye", amount: lyeAmount },
+    output_item: { item: bleachedOutput },
+    duration: 1000,
+  }).id("gregitas:barrel/" + idPrefix + "_bleach_lye")
+}
+
+function addGTMixBleach(event, opts) {
+  const bleachedOutput = opts.bleachedOutput
+  if (!bleachedOutput) return
+  const idPrefix = opts.idPrefix
+  const input = opts.bleachInput !== undefined ? opts.bleachInput : opts.input
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const lyeAmount = Math.round((opts.lyeAmount !== undefined ? opts.lyeAmount : 75) * fluidScale)
+  event.recipes.gtceu
+    .mixer("gregitas:" + idPrefix + "_bleach_lye")
+    .itemInputs(input)
+    .inputFluids(Fluid.of("tfc:lye", lyeAmount))
+    .itemOutputs(bleachedOutput)
+    .duration(40)
+    .EUt(LV)
+}
+
+function addCreateMixBleach(event, opts) {
+  const bleachedOutput = opts.bleachedOutput
+  if (!bleachedOutput) return
+  const idPrefix = opts.idPrefix
+  const input = opts.bleachInput !== undefined ? opts.bleachInput : opts.input
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const lyeAmount = Math.round((opts.lyeAmount !== undefined ? opts.lyeAmount : 75) * fluidScale)
+  event.recipes.create
+    .mixing([bleachedOutput], [input, Fluid.of("tfc:lye", lyeAmount)])
+    .id("gregitas:mixing/" + idPrefix + "_bleach_lye")
+}
+
+function addGTMixDye(event, opts) {
+  const idPrefix = opts.idPrefix
+  const input = opts.baseInput !== undefined ? opts.baseInput : opts.input
+  const coloredOutput = opts.coloredOutput
+  const colors = opts.colors !== undefined ? opts.colors : dfcColors
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const tfcDyeAmount = Math.round((opts.tfcDyeAmount !== undefined ? opts.tfcDyeAmount : 25) * fluidScale)
+  colors.forEach(function(color) {
+    event.recipes.gtceu
+      .mixer("gregitas:" + idPrefix + "_dye_" + color)
+      .itemInputs(input)
+      .inputFluids(Fluid.of("tfc:" + color + "_dye", tfcDyeAmount))
+      .itemOutputs(coloredOutput(color))
+      .duration(40)
+      .EUt(LV)
+  })
+}
+
+function addCreateMixDye(event, opts) {
+  const idPrefix = opts.idPrefix
+  const input = opts.baseInput !== undefined ? opts.baseInput : opts.input
+  const coloredOutput = opts.coloredOutput
+  const colors = opts.colors !== undefined ? opts.colors : dfcColors
+  const fluidScale = opts.fluidScale !== undefined ? opts.fluidScale : 1
+  const tfcDyeAmount = Math.round((opts.tfcDyeAmount !== undefined ? opts.tfcDyeAmount : 25) * fluidScale)
+  colors.forEach(function(color) {
+    event.recipes.create
+      .mixing([coloredOutput(color)], [input, Fluid.of("tfc:" + color + "_dye", tfcDyeAmount)])
+      .id("gregitas:mixing/" + idPrefix + "_dye_" + color)
+  })
+}
+
+function addDyeRecipes(event, opts) {
+  addChemBathDye(event, opts)
+  addBarrelDye(event, opts)
+  addChemBathBleach(event, opts)
+  addBarrelBleach(event, opts)
+  addGTMixBleach(event, opts)
+  addCreateMixBleach(event, opts)
+  addGTMixDye(event, opts)
+  addCreateMixDye(event, opts)
+}
