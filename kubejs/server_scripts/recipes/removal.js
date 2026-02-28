@@ -680,4 +680,6 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
 
   event.remove({ id: /^immersivegeology:crafting\/.*_with_work_hammer/})
   event.remove({ id: /^immersivegeology:crafting\/.*_with_bronze_hammer/})
+  event.remove({ id: "nuclearcraft:rock_crusher/purpur_block"})
+  
 }

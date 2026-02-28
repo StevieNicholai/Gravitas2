@@ -3012,8 +3012,33 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
     item: "minecraft:rabbit_stew",
     count: 1
     }
+  
+    })
 
-    }
+    event.recipes.gtceu
+    .macerator("gregitas:sulfur_dust_scguns")
+    .itemInputs("scguns:sulfur_chunk")
+    .itemOutputs("gtceu:sulfur_dust")
+    .duration(180)
+    .EUt(ULV)
 
-  )
+event.recipes.gtceu
+    .macerator("gregitas:sulfur_dust_hv_scguns")
+    .itemInputs("scguns:sulfur_chunk")
+    .itemOutputs("gtceu:sulfur_dust")
+    .chancedOutput("gtceu:sulfur_dust", 15, 1)
+    .duration(90)
+    .EUt(HV)
+
+
+
+    shaped("iceandfire:copper_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_copper"
+    }).id("gregitas:copper_pile")
+    shaped("iceandfire:silver_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_silver"
+    }).id("gregitas:silver_pile")
+    shaped("iceandfire:gold_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_gold"
+    }).id("gregitas:gold_pile")
 }
