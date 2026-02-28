@@ -74,47 +74,22 @@ const dfcRecipeAddColoredBricks = (/** @type {Internal.RecipesEventJS} */ event)
   // === COLORED BRICK CHEMICAL DYEING ===
 
   const coloredBrickVariants = [
-    { name: 'blocks', suffix: '', vanillaName: 'bricks' },
-    { name: 'slabs', suffix: '_slab', vanillaName: 'brick_slab' },
-    { name: 'stairs', suffix: '_stairs', vanillaName: 'brick_stairs' },
-    { name: 'walls', suffix: '_wall', vanillaName: 'brick_wall' }
+    { name: 'blocks', suffix: '', vanillaName: 'bricks', fluidScale: 1 },
+    { name: 'slabs', suffix: '_slab', vanillaName: 'brick_slab', fluidScale: 0.5 },
+    { name: 'stairs', suffix: '_stairs', vanillaName: 'brick_stairs', fluidScale: 0.75 },
+    { name: 'walls', suffix: '_wall', vanillaName: 'brick_wall', fluidScale: 1 },
   ]
 
   // GregTech Chemical Bath dyeing: brick + dye → colored brick (1s = 20 ticks, 140 EU = 7 EU/t)
   coloredBrickVariants.forEach(function(variant) {
-    dfcColors.forEach(function(color) {
-      event.recipes.gtceu
-        .chemical_bath(`dfc_brick_${variant.name}_dye_${color}`)
-        .itemInputs(`#gregitas:colored_brick_${variant.name}`)
-        .inputFluids(Fluid.of('gtceu:' + color + '_dye', 18))
-        .itemOutputs(`dfc:ceramic/bricks/${color}${variant.suffix}`)
-        .duration(20)
-        .EUt(7)
-
-      event.custom({
-        type: 'tfc:barrel_sealed',
-        input_item: {
-          ingredient: {
-            tag: `gregitas:colored_brick_${variant.name}`
-          }
-        },
-        input_fluid: {
-          ingredient: `tfc:${color}_dye`,
-          amount: 25
-        },
-        output_item: {
-          item: `dfc:ceramic/bricks/${color}${variant.suffix}`
-        },
-        duration: 1000
-      }).id(`gregitas:barrel/brick_${variant.name}_dye_${color}`)
+    addDyeRecipes(event, {
+      idPrefix: `dfc_brick_${variant.name}`,
+      input: `#gregitas:colored_brick_${variant.name}`,
+      baseInput: `minecraft:${variant.vanillaName}`,
+      bleachInput: `#gregitas:dfc_colored_brick_${variant.name}`,
+      coloredOutput: color => `dfc:ceramic/bricks/${color}${variant.suffix}`,
+      bleachedOutput: `minecraft:${variant.vanillaName}`,
+      fluidScale: variant.fluidScale,
     })
-
-    event.recipes.gtceu
-      .chemical_bath(`dfc_brick_${variant.name}_bleach`)
-      .itemInputs(`#gregitas:colored_brick_${variant.name}`)
-      .inputFluids(Fluid.of('gtceu:chlorine', 50))
-      .itemOutputs(`minecraft:${variant.vanillaName}`)
-      .duration(400)
-      .EUt(2)
   })
 }

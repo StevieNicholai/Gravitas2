@@ -120,24 +120,16 @@ const dfcRecipeAddGlassBrick = (/** @type {Internal.RecipesEventJS} */ event) =>
   ]
 
   glassBrickVariants.forEach(variant => {
-    // Chemical Bath: any glass brick + dye → colored glass brick (1s = 20 ticks, 140 EU = 7 EU/t)
-    dfcColors.forEach(color => {
-      event.recipes.gtceu
-        .chemical_bath(`glass_brick_${variant.name}_dye_${color}`)
-        .itemInputs(`#gregitas:glass_brick_${variant.name}`)
-        .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-        .itemOutputs(`dfc:glass/${variant.path}/${color}`)
-        .duration(20)
-        .EUt(7)
+    addChemBathDye(event, {
+      idPrefix: `glass_brick_${variant.name}`,
+      input: `#gregitas:glass_brick_${variant.name}`,
+      coloredOutput: color => `dfc:glass/${variant.path}/${color}`,
     })
-
-    // Chemical Bath: colored glass brick + chlorine → plain glass brick (20s = 400 ticks, 800 EU = 2 EU/t)
-    event.recipes.gtceu
-      .chemical_bath(`glass_brick_${variant.name}_bleach`)
-      .itemInputs(`#gregitas:glass_brick_${variant.name}`)
-      .inputFluids(Fluid.of('gtceu:chlorine', variant.chlorine))
-      .itemOutputs(`dfc:glass/${variant.path}/plain`)
-      .duration(400)
-      .EUt(2)
+    addChemBathBleach(event, {
+      idPrefix: `glass_brick_${variant.name}`,
+      input: `#gregitas:glass_brick_${variant.name}`,
+      bleachedOutput: `dfc:glass/${variant.path}/plain`,
+      chlorineAmount: variant.chlorine,
+    })
   })
 }

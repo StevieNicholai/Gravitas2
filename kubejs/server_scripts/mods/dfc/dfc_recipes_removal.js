@@ -33,14 +33,23 @@ const dfcRecipesRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ output: 'dfc:powder/gypsum' })
   event.remove({ id: 'dfc:barrel/plaster' })
 
-  // Remove DFC concrete barrel recipes (will remake with vanilla concrete)
-  dfcColors.forEach(color => {
-    event.remove({ id: `dfc:barrel/concrete/smooth/${color}` })
+  // Remove DFC concrete barrel recipes (will remake with plain-only inputs)
+  const concreteVariants = ['smooth', 'bricks', 'slab']
+  concreteVariants.forEach(variant => {
+    dfcColors.forEach(color => {
+      event.remove({ id: `dfc:barrel/concrete/${variant}/${color}` })
+    })
+    event.remove({ id: `dfc:barrel/concrete/${variant}/bleach` })
   })
-  event.remove({ id: 'dfc:barrel/concrete/smooth/bleach' })
 
   // Remove default GT concrete bleaching recipe (will remake with plain concrete output)
   event.remove({ id: 'gtceu:chemical_bath/decolor_concrete' })
+
+  // Remove default glazed tile crafting replace by furnace recipe to fit
+  // with glazed terracotta
+  dfcColors.forEach(color => {
+    event.remove({ id: `dfc:crafting/ceramic/tiles/glazed/${color}` })
+  })
 
   // Remove DFC glass pane crafting recipes (prefer cutter/saw recipes)
   const glassTypes = ['bricks', 'tiles']

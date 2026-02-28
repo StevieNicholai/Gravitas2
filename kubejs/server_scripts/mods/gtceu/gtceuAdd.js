@@ -1618,4 +1618,30 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
       .adjacentFluids('minecraft:water')
       .adjacentFluids('minecraft:lava')
   })
+
+  // Remove GTCEu built-in wool chemical bath dye recipes (replaced below)
+  dfcColors.filter(c => c !== "white").forEach(function(color) {
+    event.remove({ id: `gtceu:chemical_bath/dye_wool_to_${color}` })
+  })
+  event.remove({ id: `gtceu:chemical_bath/wool_to_white` })
+  event.remove({ id: `gtceu:chemical_bath/wool_bleach` })
+
+  // Wool: chemical bath dye (any #minecraft:wool → colored) and bleach (#tfc:colored_wool → white)
+  addChemBathDye(event, {
+    idPrefix: "wool",
+    input: "#minecraft:wool",
+    coloredOutput: color => `minecraft:${color}_wool`,
+  })
+
+  // Remove GTCEu built-in terracotta chemical bath dye recipes (replaced below)
+  dfcColors.forEach(function(color) {
+    event.remove({ id: `gtceu:chemical_bath/dye_terracotta_to_${color}` })
+  })
+
+  // Terracotta: chemical bath dye (any #minecraft:terracotta → colored) and bleach (→ plain)
+  addChemBathDye(event, {
+    idPrefix: "terracotta",
+    input: "#minecraft:terracotta",
+    coloredOutput: color => `minecraft:${color}_terracotta`,
+  })
 }

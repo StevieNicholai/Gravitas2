@@ -57,6 +57,7 @@ ServerEvents.tags("worldgen/placed_feature", (event) => {
 ServerEvents.tags("item", (event) => {
   addItemTags(event)
   dfcAddItemTags(event)
+  tfcAddItemTags(event)
 })
 ServerEvents.tags("entity", (event) => {
   entityTags(event)

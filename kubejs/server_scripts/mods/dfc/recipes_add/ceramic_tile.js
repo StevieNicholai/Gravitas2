@@ -99,54 +99,65 @@ const dfcRecipeAddCeramicTile = (/** @type {Internal.RecipesEventJS} */ event) =
     })
   })
   
+  // === GLAZED TILE CREATION ===
+  // Smelting: colored ceramic tile (normal) → corresponding glazed tile (10s = 200 ticks)
+  // Mirrors the vanilla glazed terracotta pattern
+
+  dfcColors.forEach(color => {
+    event.smelting(`dfc:ceramic/tiles/glazed/${color}`, `dfc:ceramic/tiles/normal/${color}`)
+      .cookingTime(200)
+  })
+
   // === CERAMIC TILE DYEING ===
 
   const tileVariants = [
-    { name: 'blocks', suffix: '' },
-    { name: 'slabs', suffix: '_slab' },
-    { name: 'stairs', suffix: '_stairs' }
+    { name: 'blocks', suffix: '', fluidScale: 1 },
+    { name: 'slabs', suffix: '_slab', fluidScale: 0.5 },
+    { name: 'stairs', suffix: '_stairs', fluidScale: 0.75 },
   ]
 
   dfcTileTypes.forEach(type => {
     tileVariants.forEach(variant => {
-      // Dyeing recipes: any tile of this type + dye → colored tile (1s = 20 ticks, 140 EU = 7 EU/t)
-      dfcColors.forEach(color => {
-        event.recipes.gtceu
-          .chemical_bath(`dfc_tile_${type}_${variant.name}_dye_${color}`)
-          .itemInputs(`#gregitas:ceramic_tile_${variant.name}/${type}`)
-          .inputFluids(Fluid.of(`gtceu:${color}_dye`, 18))
-          .itemOutputs(`dfc:ceramic/tiles/${type}/${color}${variant.suffix}`)
-          .duration(20)
-          .EUt(7)
-
-	event.custom({
-          type: 'tfc:barrel_sealed',
-          input_item: {
-            ingredient: {
-              tag: `gregitas:ceramic_tile_${variant.name}/${type}`
-            }
-          },
-          input_fluid: {
-            ingredient: `tfc:${color}_dye`,
-            amount: 25
-          },
-          output_item: {
-            item: `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`
-          },
-          duration: 1000
-        }).id(`gregitas:barrel/tile_${type}_${variant.name}_dye_${color}`)
-      })
-
-      // Bleaching: colored tile → plain tile (20s = 400 ticks, 800 EU = 2 EU/t)
-      // Glazed tiles don't have a plain variant
-      if (type !== 'glazed') {
-        event.recipes.gtceu
-          .chemical_bath(`dfc_tile_${type}_${variant.name}_bleach`)
-          .itemInputs(`#gregitas:ceramic_tile_${variant.name}/${type}`)
-          .inputFluids(Fluid.of('gtceu:chlorine', 50))
-          .itemOutputs(`dfc:ceramic/tiles/${type}/plain${variant.suffix}`)
-          .duration(400)
-          .EUt(2)
+      if (type === "glazed") {
+        // Glazed: chemical bath allows re-dye from any color; white is the base for barrel/mixing
+        addChemBathDye(event, {
+          idPrefix: `dfc_tile_${type}_${variant.name}`,
+          input: `#gregitas:ceramic_tile_${variant.name}/${type}`,
+          coloredOutput: color => `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`,
+          fluidScale: variant.fluidScale,
+        })
+        addBarrelDye(event, {
+          idPrefix: `dfc_tile_${type}_${variant.name}`,
+          input: `dfc:ceramic/tiles/${type}/white${variant.suffix}`,
+          colors: dfcColors.filter(c => c !== "white"),
+          coloredOutput: color => `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`,
+          fluidScale: variant.fluidScale,
+        })
+        addGTMixDye(event, {
+          idPrefix: `dfc_tile_${type}_${variant.name}`,
+          input: `dfc:ceramic/tiles/${type}/white${variant.suffix}`,
+          colors: dfcColors.filter(c => c !== "white"),
+          coloredOutput: color => `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`,
+          fluidScale: variant.fluidScale,
+        })
+        addCreateMixDye(event, {
+          idPrefix: `dfc_tile_${type}_${variant.name}`,
+          input: `dfc:ceramic/tiles/${type}/white${variant.suffix}`,
+          colors: dfcColors.filter(c => c !== "white"),
+          coloredOutput: color => `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`,
+          fluidScale: variant.fluidScale,
+        })
+      } else {
+        // Non-glazed: full suite, barrel/mixer/Create use plain as base
+        addDyeRecipes(event, {
+          idPrefix: `dfc_tile_${type}_${variant.name}`,
+          input: `#gregitas:ceramic_tile_${variant.name}/${type}`,
+          baseInput: `dfc:ceramic/tiles/${type}/plain${variant.suffix}`,
+          bleachInput: `#gregitas:ceramic_tile_${variant.name}_colored/${type}`,
+          coloredOutput: color => `dfc:ceramic/tiles/${type}/${color}${variant.suffix}`,
+          bleachedOutput: `dfc:ceramic/tiles/${type}/plain${variant.suffix}`,
+          fluidScale: variant.fluidScale,
+        })
       }
     })
   })
