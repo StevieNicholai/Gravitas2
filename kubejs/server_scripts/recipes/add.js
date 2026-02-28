@@ -2233,26 +2233,6 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
 
   //alabaster
 
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster`)
-      .itemInputs(`tfc:alabaster/raw`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/raw/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
-
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster_bricks`)
-      .itemInputs(`tfc:alabaster/bricks`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/bricks/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
-
   event.recipes.gtceu
     .mixer(`gregitas:mixer_tfc_alabaster`)
     .itemInputs(`tfc:ore/gypsum`)
@@ -2260,16 +2240,6 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
     .itemOutputs(`tfc:alabaster/raw`)
     .duration(20)
     .EUt(LV)
-
-  FluidDyes.forEach((dyes) => {
-    event.recipes.gtceu
-      .mixer(`gregitas:mixer_tfc_${dyes}_alabaster_polished`)
-      .itemInputs(`tfc:alabaster/polished`)
-      .inputFluids(Fluid.of(`tfc:${dyes}_dye`, 25))
-      .itemOutputs(`tfc:alabaster/polished/${dyes}`)
-      .duration(40)
-      .EUt(LV)
-  })
 
   // TFC gem macerating
   
@@ -3107,4 +3077,71 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
     .chancedOutput("gtceu:saltpeter_dust", 420, 1)
     .duration(180)
     .EUt(80)    
+
+
+    event.custom({
+      type:"firmalife:mixing_bowl",
+      ingredients:[
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            item: "tfc:food/cooked_rabbit"
+          }   
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          type: "tfc:not_rotten",
+          ingredient: {
+            tag: "tfc:foods/usable_in_soup"
+          }
+        },
+        {
+          item: "minecraft:rabbit_foot"
+        }
+
+      ],
+    output_item: {
+    item: "minecraft:rabbit_stew",
+    count: 1
+    }
+  
+    })
+
+    event.recipes.gtceu
+    .macerator("gregitas:sulfur_dust_scguns")
+    .itemInputs("scguns:sulfur_chunk")
+    .itemOutputs("gtceu:sulfur_dust")
+    .duration(180)
+    .EUt(ULV)
+
+event.recipes.gtceu
+    .macerator("gregitas:sulfur_dust_hv_scguns")
+    .itemInputs("scguns:sulfur_chunk")
+    .itemOutputs("gtceu:sulfur_dust")
+    .chancedOutput("gtceu:sulfur_dust", 15, 1)
+    .duration(90)
+    .EUt(HV)
+
+
+
+    shaped("iceandfire:copper_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_copper"
+    }).id("gregitas:copper_pile")
+    shaped("iceandfire:silver_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_silver"
+    }).id("gregitas:silver_pile")
+    shaped("iceandfire:gold_pile", [" CC", "   ", "   "], {
+      C: "tfc:ore/rich_native_gold"
+    }).id("gregitas:gold_pile")
 }
