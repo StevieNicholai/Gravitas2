@@ -671,6 +671,19 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._4/`})
   event.remove({ id: `/^woodencog:heated_mixing\/food\/jams\/*._3/`})
   event.remove({ id: "farmersdelight:cutting/saddle"})
+  event.remove({ id: "minecraft:nuclearcraft_iridium_dust"})
+  event.remove({ id: "nuclearcraft:blast_iridium_dust"})
+  event.remove({ id: "nuclearcraft:rock_crusher/purpur_block"})
+  event.remove({ id: "nuclearcraft:actuator"})
+  event.remove({ id: "nuclearcraft:chassis"})
+  event.remove({ id: "nuclearcraft:motor"})
+  event.remove({ id: "nuclearcraft:coil_copper"})
+  event.remove({ id: "nuclearcraft:plate_basic"})
+  event.remove({ id: "nuclearcraft:plate_basic2"})
+  event.remove({ id: "minecraft:nuclearcraft_hsla_steel_dust"})
+  event.remove({ id: "nuclearcraft:rock_crusher/granite"})
+  event.remove({ id: "minecraft:nuclearcraft_tungsten_dust"})
+
   event.remove({ id: "nuclearcraft:alloy_smelter/ingots_iron-ingots_carbon_manganese"})
   event.remove({ id: "nuclearcraft:alloy_smelter/dusts_iron-dusts_carbon_manganese"})
   event.remove({ id: "dfc:crafting/alt_fire_clay"})
@@ -681,5 +694,5 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: /^immersivegeology:crafting\/.*_with_work_hammer/})
   event.remove({ id: /^immersivegeology:crafting\/.*_with_bronze_hammer/})
   event.remove({ id: "nuclearcraft:rock_crusher/purpur_block"})
-  
+
 }

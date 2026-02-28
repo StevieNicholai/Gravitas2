@@ -2576,6 +2576,139 @@ event.recipes.create.crushing([`2x minecraft:gray_dye`], `gtceu:stone_dust`, 250
 
   // Nuclearcraft Recipes
 
+  // Basic Materials
+
+  event.recipes.gtceu
+    .mixer("gregitas:lead_carbide_dust")
+    .itemInputs("#forge:dusts/lead", "#forge:dusts/graphite")
+    .itemOutputs("gregitas:lead_carbide_dust")
+    .duration(400)
+    .EUt(HV)
+
+  event.recipes.gtceu
+    .electric_blast_furnace("gregitas:lead_carbide_ingot")
+    .itemInputs("gregitas:lead_carbide_dust")
+    .inputFluids(Fluid.of("gtceu:helium", 500))
+    .itemOutputs("gregitas:lead_carbide_ingot")
+    .blastFurnaceTemp(3600)
+    .duration(600)
+    .EUt(EV)    
+
+  event.recipes.gtceu
+    .bender("gregitas:plate_basic")
+    .itemInputs("gregitas:lead_carbide_ingot")
+    .itemOutputs("nuclearcraft:plate_basic")
+    .duration(400)
+    .EUt(HV)
+
+  event.recipes.gtceu
+   .chemical_reactor("gregitas:plate_advanced")
+   .itemInputs("nuclearcraft:plate_basic", "nuclearcraft:tough_alloy_ingot")
+   .inputFluids(Fluid.of("gtceu:redstone", 72))
+   .itemOutputs("nuclearcraft:plate_advanced")
+   .duration(400)
+   .EUt(HV)
+
+  event.recipes.gtceu
+   .chemical_reactor("gregitas:plate_du")
+   .itemInputs("nuclearcraft:plate_advanced")
+   .inputFluids(Fluid.of("gtceu:uranium", 576))
+   .inputFluids(Fluid.of("gtceu:sulfuric_acid", 4000))
+   .itemOutputs("nuclearcraft:plate_du")
+   .duration(400)
+   .EUt(HV)   
+ 
+  event.recipes.gtceu
+   .chemical_reactor("gregitas:plate_elite")
+   .itemInputs("nuclearcraft:plate_du", "9x gtceu:energium_dust")
+   .inputFluids(Fluid.of("nuclearcraft:boron", 576))
+   .itemOutputs("nuclearcraft:plate_elite")
+   .duration(400)
+   .EUt(EV) 
+ 
+  event.recipes.gtceu
+   .chemical_reactor("gregitas:plate_extreme")
+   .itemInputs("nuclearcraft:plate_elite", "4x nuclearcraft:extreme_ingot")
+   .inputFluids(Fluid.of("gtceu:hsla_steel", 576))
+   .itemOutputs("nuclearcraft:plate_extreme")
+   .duration(400)
+   .EUt(EV) 
+
+  event.recipes.gtceu
+   .extractor("gregitas:liquid_boron_from_ingots")
+   .itemInputs("#forge:ingots/boron")
+   .outputFluids(Fluid.of("nuclearcraft:boron", 144))
+   .duration(100)
+   .EUt(LV)
+ 
+  event.recipes.gtceu
+   .extractor("gregitas:liquid_boron_from_dusts")
+   .itemInputs("#forge:dusts/boron")
+   .outputFluids(Fluid.of("nuclearcraft:boron", 144))
+   .duration(100)
+   .EUt(LV)  
+
+  event.recipes.gtceu.assembler("gregitas:chassis")
+    .itemInputs("gtceu:steel_frame", "6x gtceu:lead_plate", "#gtceu:circuits/hv")
+    .itemOutputs("nuclearcraft:chassis")
+    .duration(400)
+    .EUt(HV)
+
+  event.recipes.gtceu.assembler("gregitas:coppercoil")
+    .itemInputs("16x gtceu:fine_copper_wire", "2x gtceu:iron_rod")
+    .itemOutputs("2x nuclearcraft:coil_copper")
+    .duration(200)
+    .EUt(HV)
+    
+  event.recipes.gtceu
+    .alloy_smelter("gregitas:ferroboron")
+    .itemInputs("#forge:ingots/steel", "nuclearcraft:boron_ingot")
+    .itemOutputs("2x nuclearcraft:ferroboron_ingot")
+    .duration(60)
+    .EUt(HV)
+  
+  event.recipes.gtceu
+    .alloy_smelter("gregitas:ferroborondusts")
+    .itemInputs("#forge:dusts/steel", "#forge:dusts/boron")
+    .itemOutputs("2x nuclearcraft:ferroboron_ingot")
+    .duration(60)
+    .EUt(HV)
+  
+  event.recipes.gtceu.assembler("gregitas:nuclearcraftmotor")
+    .itemInputs("4x gtceu:steel_plate", "2x gtceu:copper_bolt", "gtceu:iron_rod", "2x nuclearcraft:coil_copper")
+    .itemOutputs("nuclearcraft:motor")
+    .duration(200)
+    .EUt(HV)
+  
+  event.recipes.gtceu.assembler("gregitas:actuator")
+    .itemInputs("2x nuclearcraft:ferroboron_plate", "minecraft:piston", "8x gtceu:fine_copper_wire", "2x gtceu:steel_bolt") 
+    .itemOutputs("nuclearcraft:actuator")
+    .duration(200)
+    .EUt(HV)
+     
+  event.recipes.gtceu
+    .bender("gregitas:ferroboronplates")
+    .itemInputs("nuclearcraft:ferroboron_ingot")
+    .itemOutputs("nuclearcraft:ferroboron_plate")
+    .duration(200)
+    .EUt(HV)
+
+  //Rock Crusher to Macerators
+  
+  event.recipes.gtceu
+   .macerator("rhodochrosite_villiaumite")
+   .itemInputs("4x tfc:rock/raw/granite")
+   .itemOutputs("2x nuclearcraft:rhodochrosite_dust", "nuclearcraft:villiaumite_dust")
+   .duration(100)
+   .EUt(MV)
+
+  event.recipes.gtceu
+   .macerator("tungstendust_niobiumdust")
+   .itemInputs("7x minecraft:basalt")
+   .itemOutputs("2x nuclearcraft:rhodochrosite_dust", "nuclearcraft:villiaumite_dust")
+   .duration(100)
+   .EUt(MV) 
+
   // Fission
   event.recipes.gtceu.mixer("gregitas:fission_reactor_casing")
     .itemInputs("gtceu:steel_frame", "6x gtceu:lead_plate", "6x gtceu:steel_plate")
