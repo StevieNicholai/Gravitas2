@@ -3133,15 +3133,30 @@ event.recipes.gtceu
     .duration(90)
     .EUt(HV)
 
+event.recipes.gtceu
+    .mixer("gt_silt_mud_bricks")
+    .itemInputs("1x tfc:dirt/silt")
+    .itemInputs("1x tfc:straw")
+    .inputFluids(Fluid.of("minecraft:water", 125))
+    .itemOutputs("4x tfc:drying_bricks/silt")
+    .EUt(ULV)
+    .duration(160)
 
+event.recipes.gtceu
+    .alloy_smelter("silt_brick_dry")
+    .itemInputs("4x tfc:drying_bricks/silt")
+    .notConsumable("gtceu:ingot_casting_mold")
+    .itemOutputs("4x tfc:mud_brick/silt")
+    .EUt(LV)
+    .duration(80)
 
-    shaped("iceandfire:copper_pile", [" CC", "   ", "   "], {
-      C: "tfc:ore/rich_native_copper"
-    }).id("gregitas:copper_pile")
-    shaped("iceandfire:silver_pile", [" CC", "   ", "   "], {
-      C: "tfc:ore/rich_native_silver"
-    }).id("gregitas:silver_pile")
-    shaped("iceandfire:gold_pile", [" CC", "   ", "   "], {
-      C: "tfc:ore/rich_native_gold"
-    }).id("gregitas:gold_pile")
+  shaped("iceandfire:copper_pile", [" CC", "   ", "   "], {
+    C: "tfc:ore/rich_native_copper"
+  }).id("gregitas:copper_pile")
+  shaped("iceandfire:silver_pile", [" CC", "   ", "   "], {
+    C: "tfc:ore/rich_native_silver"
+  }).id("gregitas:silver_pile")
+  shaped("iceandfire:gold_pile", [" CC", "   ", "   "], {
+    C: "tfc:ore/rich_native_gold"
+  }).id("gregitas:gold_pile")
 }

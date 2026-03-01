@@ -258,4 +258,5 @@ const addBlockTags = (/** @type {TagEvent.Block} */ event) => {
   event.add("minecraft:needs_netherite_tool", "sgjourney:transport_rings")
   event.remove("minecraft:needs_iron_tool", "sgjourney:ring_panel")
   event.add("minecraft:needs_netherite_tool", "sgjourney:ring_panel")
+  event.add("vs_eureka:assemble_blacklist", "#tfc:plants")
 }
